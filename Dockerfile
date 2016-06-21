@@ -1,4 +1,4 @@
-#  Copyright 2014 IBM
+#  Copyright 2016 IBM
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -13,10 +13,12 @@
 #   limitations under the License.
 
 FROM node
-MAINTAINER Robbie Minshall "rjminsha@us.ibm.com"
+MAINTAINER Philippe Mulet "philippe_mulet@fr.ibm.com"
 
 # Install the application
-ADD package.json /app/package.json 
+ADD package.json /app/package.json
+ADD login.defs /etc/login.defs
+ADD common-password /etc/pam.d/common-passord
 RUN cd /app && npm install  
 ADD app.js /app/app.js
 ENV WEB_PORT 80
