@@ -27,9 +27,9 @@ RUN sed -i 's/ˆPASS_MAX_DAYS.*/PASS_MAX_DAYS   90/' /etc/login.defs
 RUN sed -i 's/sha512/sha512 minlen=8/' /etc/pam.d/common-password
 
 # Remove SSH for compliance with vulnerability advisor
-RUN apt-get purge -y openssh-server
-RUN apt-get remove -y openssh-sftp-server
-RUN apt-get -y autoremove
+# RUN apt-get purge -y openssh-server
+# RUN apt-get remove -y openssh-sftp-server
+# RUN apt-get -y autoremove
 
 # Define command to run the application when the container starts
 CMD ["node", "/app/app.js"] 
