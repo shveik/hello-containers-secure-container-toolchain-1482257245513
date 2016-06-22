@@ -23,7 +23,7 @@ ENV WEB_PORT 80
 EXPOSE  80
 
 # Set password length and expiry for compliance with vulnerability advisor
-RUN sed -i 's/ˆPASS_MAX_DAYS.*/PASS_MAX_DAYS   90/' /etc/login.defs
+RUN sed -i 's/PASS_MAX_DAYS.*/PASS_MAX_DAYS   90/' /etc/login.defs
 RUN sed -i 's/sha512/sha512 minlen=8/' /etc/pam.d/common-password
 
 # Remove SSH for compliance with vulnerability advisor
