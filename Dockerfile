@@ -22,10 +22,10 @@ ADD app.js /app/app.js
 ENV WEB_PORT 80
 EXPOSE  80
 
-# uninstall openssh-server
+# Vulnerability Advisor : uninstall openssh-server
 # RUN apt-get --purge remove openssh-server
 
-# Fix PASS.MAX.DAYS and PASS.MIN.LEN
+# Vulnerability Advisor : Fix PASS.MAX.DAYS and PASS.MIN.LEN
 RUN mv -f /etc/login.defs /etc/login.defs.orig
 RUN sed 's/^PASS_MAX_DAYS.*/PASS_MAX_DAYS 90/' /etc/login.defs.orig > /etc/login.defs
 RUN grep -q '^PASS_MIN_LEN' /etc/login.defs && sed -i 's/^PASS_MIN_LEN.*/PASS_MIN_LEN 8/' /etc/login.defs || echo 'PASS_MIN_LEN 9\n' >> /etc/login.defs
