@@ -32,6 +32,10 @@ RUN grep -q '^PASS_MIN_DAYS' /etc/login.defs && sed -i 's/^PASS_MIN_DAYS.*/PASS_
 RUN grep -q '^PASS_MIN_LEN' /etc/login.defs && sed -i 's/^PASS_MIN_LEN.*/PASS_MIN_LEN 8/' /etc/login.defs || echo 'PASS_MIN_LEN 9\n' >> /etc/login.defs
 RUN grep -q '^password.*required' /etc/pam.d/common-password && sed -i 's/^password.*required.*/password    required            pam_permit.so minlen=9/' /etc/pam.d/common-password || echo 'password    required            pam_permit.so minlen=9' >> /etc/pam.d/common-password
 
+# Vulnerability Advisor : Temporarily remove a specific <package> that was discovered vulnerable
+# RUN dpkg --purge --force-all <package>
+
+
 # Define command to run the application when the container starts
 CMD ["node", "/app/app.js"] 
 
