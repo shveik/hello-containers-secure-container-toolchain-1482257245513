@@ -38,6 +38,8 @@ RUN grep -q '^password.*required' /etc/pam.d/common-password && sed -i 's/^passw
 # Vulnerability Advisor : Temporarily remove a specific <package> that was discovered vulnerable
 # RUN dpkg --purge --force-all <package>
 
+# Address a current vulnerability in public node image by removing offending package
+# RUN dpkg --purge --force-all libgcrypt20 
 
 # Define command to run the application when the container starts
 CMD ["node", "/app/app.js"] 
